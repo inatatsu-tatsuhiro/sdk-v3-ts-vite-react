@@ -45,6 +45,9 @@ export default defineConfig({
       enforce: 'post'
     }
   ],
+  server: {
+    cors: false,
+  },
   resolve: {
     alias: {...stdLibBrowser, 'symbol-crypto-wasm-node': symbolCryptoWasmPath},
   },
