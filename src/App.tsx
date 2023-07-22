@@ -4,7 +4,6 @@ import symbolSdk from './libs/src'
 import TransactionFactory from './libs/src/symbol/TransactionFactory'
 
 const ALICE_PRIVATE_KEY = ''
-const ALICE_PUBLIC_KEY = ''
 const BOB_ADDRESS = ''
 
 const NODE_URL = 'https://sym-test-03.opening-line.jp:3001'
@@ -27,7 +26,7 @@ function App() {
 
     const transaction = facade.transactionFactory.create({
       type: 'transfer_transaction_v1',
-      signerPublicKey: ALICE_PUBLIC_KEY,
+      signerPublicKey: aliceKeyPair.publicKey.toString(),
       fee: 1000000n,
       deadline,
       recipientAddress: BOB_ADDRESS,
@@ -52,16 +51,11 @@ function App() {
 
   }
 
-  const submit2 = () => {
-    const txType = symbolSdk.symbol.TransactionType.TRANSFER.toString()
-    console.log({txType})
-  }
 
   return (
     <div>
       <div>Hello World</div>
       <button onClick={submit}>Submit</button>
-      <button onClick={submit2}>Submit2</button>
     </div>
   )
 }
