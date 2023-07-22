@@ -1,7 +1,9 @@
 
 import { Configuration, ConfigurationParameters, TransactionPayload, TransactionRoutesApi } from '@nemtus/symbol-sdk-openapi-generator-typescript-axios'
-import symbolSdk from './libs/src'
-import TransactionFactory from './libs/src/symbol/TransactionFactory'
+import symbolSdk from './libs/symbol/src'
+import TransactionFactory from './libs/symbol/src/symbol/TransactionFactory'
+import {TransactionType} from './libs/symbol/src/symbol/models'
+import { transactionTypeConverter } from './libs/transactionHelper'
 
 const ALICE_PRIVATE_KEY = import.meta.env.VITE_ALICE_PRIVATE_KEY as string
 const BOB_ADDRESS = import.meta.env.VITE_BOB_ADDRESS as string
@@ -25,7 +27,7 @@ function App() {
     const aliceKeyPair = new symbolSdk.symbol.KeyPair(alicePrivateKey)
 
     const transaction = facade.transactionFactory.create({
-      type: 'transfer_transaction_v1',
+      type: transactionTypeConverter(TransactionType.TRANSFER),
       signerPublicKey: aliceKeyPair.publicKey.toString(),
       fee: 1000000n,
       deadline,
@@ -50,6 +52,7 @@ function App() {
     })
 
   }
+
 
 
   return (
