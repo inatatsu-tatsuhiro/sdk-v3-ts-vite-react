@@ -1,0 +1,13 @@
+defaultCiPipeline {
+	operatingSystem = ['ubuntu']
+	instanceSize = 'medium'
+
+	ciBuildDockerfile = 'javascript.Dockerfile'
+
+	packageId = 'sdk-javascript'
+
+	publisher = 'npm'
+
+	codeCoverageTool = 'c8'
+	minimumCodeCoverage = 90
+}
