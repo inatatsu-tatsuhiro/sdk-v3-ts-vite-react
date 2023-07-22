@@ -3,8 +3,8 @@ import { Configuration, ConfigurationParameters, TransactionPayload, Transaction
 import symbolSdk from './libs/src'
 import TransactionFactory from './libs/src/symbol/TransactionFactory'
 
-const ALICE_PRIVATE_KEY = ''
-const BOB_ADDRESS = ''
+const ALICE_PRIVATE_KEY = import.meta.env.VITE_ALICE_PRIVATE_KEY as string
+const BOB_ADDRESS = import.meta.env.VITE_BOB_ADDRESS as string
 
 const NODE_URL = 'https://sym-test-03.opening-line.jp:3001'
 
